@@ -51,6 +51,9 @@ module.exports = function(schema, option) {
   // Classes
   const classes = [];
 
+  // imgImport
+  const images = [];
+
   // 1vw = width / 100
   const _w = (option.responsive.width / 100) || 750;
 
@@ -217,6 +220,22 @@ module.exports = function(schema, option) {
     };
   }
 
+  const parseImgUrl = (value, className) => {
+    if (typeof value === 'string') {
+      if (isExpression(value)) {
+        return value.slice(2, -2);
+      }
+      const url = `${className.replace('-','_')}_${images.length}`
+      images.push(`import ${url} from '${value}'`)
+      return url;
+    } else if(typeof value === 'function'){
+      const {params, content} = parseFunction(value);
+      return `(${params}) => {${content}}`;
+    } else {
+      return
+    }
+  }
+
   // parse layer props(static values or expression)
   const parseProps = (value, isReactNode) => {
     if (typeof value === 'string') {
@@ -335,7 +354,7 @@ module.exports = function(schema, option) {
   const generateRender = (schema) => {
     const type = schema.componentName.toLowerCase();
     const className = schema.props && schema.props.className || '';
-    const classString = className ? ` className="${className}"` : '';
+    const classString = className ? ` styleName="${className}"` : '';
     if (className) {
       style[className] = schema.props.style;
     }
@@ -354,8 +373,9 @@ module.exports = function(schema, option) {
         xml = `<span${classString}${props}>${innerText}</span>`;
         break;
       case 'image':
-        const source = parseProps(schema.props.src);
-        xml = `<img${classString}${props} src={${source}} srcSet='${source && source.slice(1,-1)} 3x' />`;
+        const source = parseImgUrl(schema.props.src, className);
+        const srcSet = typeof schema.props.src === 'string' && !isExpression(schema.props.src) ? ` srcSet={\`\$\{${source}\} 3x\`}` : ''
+        xml = `<img${classString}${props} src={${source}}${srcSet}/>`;
         break;
       case 'div':
       case 'page':
@@ -513,7 +533,8 @@ module.exports = function(schema, option) {
         panelValue: prettier.format(`
           import React, { Component } from 'react';
           ${importStrings.join('\n')}
-          import './style.css';
+          ${images.join('\n')}
+          import './style.scss';
 
           ${utils.join('\n')}
           ${classes.join('\n')}
