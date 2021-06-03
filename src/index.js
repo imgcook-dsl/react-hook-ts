@@ -55,7 +55,7 @@ module.exports = function(schema, option) {
   const images = [];
 
   // 1vw = width / 100
-  const _w = (option.responsive.width / 100) || 750;
+  const _w = 3.75;
 
   let pageLock = false;
 
@@ -167,7 +167,7 @@ module.exports = function(schema, option) {
         styleData.push(`${_.kebabCase(key)}: ${value}`);
       }
     }
-    return styleData.join(';');
+    return styleData.join(';\n');
   }
 
 
@@ -180,7 +180,7 @@ module.exports = function(schema, option) {
   };
 
   // className structure support
-  const generateScss = (schema) => {
+  const generateScss = (schema, toVw) => {
     let scss = '';
 
     function walk(json) {
@@ -188,10 +188,8 @@ module.exports = function(schema, option) {
         let className = json.props.className;
 
         scss += `.${className} {`;
-
-        for (let key in style[className]) {
-          scss += `${parseCamelToLine(key)}: ${style[className][key]};\n`;
-        }
+        scss += formatStyle(style[className], toVw)
+        scss += ';\n'
       }
 
       // 递归遍历
@@ -544,7 +542,14 @@ module.exports = function(schema, option) {
       },
       {
         panelName: `style.scss`,
-        panelValue: prettier.format(generateScss(schema, style), {
+        panelValue: prettier.format(generateScss(schema, true), {
+          parser: 'scss'
+        }),
+        panelType: 'scss'
+      },
+      {
+        panelName: `style_pc.scss`,
+        panelValue: prettier.format(generateScss(schema), {
           parser: 'scss'
         }),
         panelType: 'scss'

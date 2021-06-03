@@ -3,8 +3,8 @@
   position: relative;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
-  height: 216.53vw;
+  width: 375px;
+  height: 812px;
   .item-long-wrapper {
     display: flex;
     position: absolute;
@@ -14,8 +14,8 @@
     flex-direction: row;
     justify-content: center;
     .item-long {
-      width: 100vw;
-      height: 217.87vw;
+      width: 375px;
+      height: 817px;
     }
   }
   .entry-pic-wrapper {
@@ -27,8 +27,8 @@
     flex-direction: row;
     justify-content: center;
     .entry-pic {
-      width: 100.27vw;
-      height: 54.67vw;
+      width: 376px;
+      height: 205px;
     }
   }
   .action-bg-wrapper {
@@ -37,24 +37,24 @@
     align-items: flex-start;
     flex-direction: row;
     justify-content: center;
-    margin-top: 32.8vw;
+    margin-top: 123px;
     .action-bg {
-      width: 82.4vw;
-      height: 14.93vw;
+      width: 309px;
+      height: 56px;
     }
   }
   .wrapper-inner {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 4.27vw;
+    margin-top: 16px;
     position: relative;
     .group {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: flex-start;
-      width: 100vw;
+      width: 375px;
       position: static;
       top: 0;
       left: 0;
@@ -62,16 +62,16 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 67.2vw;
+        width: 375px;
+        height: 252px;
       }
       .background-wrapper {
         display: flex;
         flex-direction: column;
-        margin-top: 4.27vw;
-        width: 82.93vw;
-        height: 86.4vw;
-        line-height: 6.93vw;
+        margin-top: 16px;
+        width: 311px;
+        height: 324px;
+        line-height: 26px;
         text-align: center;
         position: relative;
         white-space: nowrap;
@@ -79,84 +79,84 @@
           position: absolute;
           top: 0;
           align-self: center;
-          width: 82.93vw;
-          height: 86.4vw;
-          line-height: NaNvw;
+          width: 311px;
+          height: 324px;
+          line-height: NaNpx;
           white-space: normal;
         }
         .desc {
-          margin-top: 12.27vw;
-          height: 6.93vw;
+          margin-top: 46px;
+          height: 26px;
           font-weight: 400;
-          font-size: 3.73vw;
+          font-size: 14px;
           color: #7d0000;
           position: relative;
-          max-width: 63.73vw;
+          max-width: 239px;
           overflow: hidden;
           text-overflow: ellipsis;
         }
         .detail {
-          margin-top: 6.67vw;
-          height: 6.93vw;
+          margin-top: 25px;
+          height: 26px;
           font-weight: 400;
-          font-size: 3.73vw;
+          font-size: 14px;
           color: #7d0000;
           position: relative;
-          max-width: 63.73vw;
+          max-width: 239px;
           overflow: hidden;
           text-overflow: ellipsis;
         }
         .desc-1 {
-          margin-top: 0.27vw;
-          height: 6.93vw;
+          margin-top: 1px;
+          height: 26px;
           font-weight: 400;
-          font-size: 3.73vw;
+          font-size: 14px;
           color: #7d0000;
           position: relative;
-          max-width: 63.73vw;
+          max-width: 239px;
           overflow: hidden;
           text-overflow: ellipsis;
         }
         .detail-1 {
-          height: 6.93vw;
+          height: 26px;
           font-weight: 400;
-          font-size: 3.73vw;
+          font-size: 14px;
           color: #7d0000;
           position: relative;
-          max-width: 64.27vw;
+          max-width: 241px;
           overflow: hidden;
           text-overflow: ellipsis;
         }
         .tag {
-          margin-top: 6.93vw;
-          height: 6.93vw;
+          margin-top: 26px;
+          height: 26px;
           font-weight: 400;
-          font-size: 3.73vw;
+          font-size: 14px;
           color: #7d0000;
           position: relative;
           white-space: pre;
-          max-width: 64.27vw;
+          max-width: 241px;
           overflow: hidden;
           text-overflow: ellipsis;
         }
         .desc-2 {
           position: relative;
           align-self: center;
-          max-width: 63.73vw;
-          height: 6.93vw;
+          max-width: 239px;
+          height: 26px;
           overflow: hidden;
           text-overflow: ellipsis;
           color: #7d0000;
-          font-size: 3.73vw;
+          font-size: 14px;
           font-weight: 400;
         }
         .info {
-          height: 6.93vw;
+          height: 26px;
           font-weight: 400;
-          font-size: 3.73vw;
+          font-size: 14px;
           color: #7d0000;
           position: relative;
-          max-width: 64.27vw;
+          max-width: 241px;
           overflow: hidden;
           text-overflow: ellipsis;
         }
@@ -173,14 +173,14 @@
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
-        width: 100vw;
-        height: 76.8vw;
+        width: 375px;
+        height: 288px;
         background-image: url(https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/9d3dc9a0c41d11ebac087f5b49da2cb7.png);
         background-size: contain;
         .button-bg {
-          margin-top: 34.67vw;
-          width: 94.4vw;
-          height: 33.87vw;
+          margin-top: 130px;
+          width: 354px;
+          height: 127px;
         }
       }
     }
