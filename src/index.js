@@ -218,22 +218,6 @@ module.exports = function(schema, option) {
     };
   }
 
-  const parseImgUrl = (value, className) => {
-    if (typeof value === 'string') {
-      if (isExpression(value)) {
-        return value.slice(2, -2);
-      }
-      const url = `${className.replace('-','_')}_${images.length}`
-      images.push(`import ${url} from '${value}'`)
-      return url;
-    } else if(typeof value === 'function'){
-      const {params, content} = parseFunction(value);
-      return `(${params}) => {${content}}`;
-    } else {
-      return
-    }
-  }
-
   // parse layer props(static values or expression)
   const parseProps = (value, isReactNode) => {
     if (typeof value === 'string') {
@@ -371,9 +355,8 @@ module.exports = function(schema, option) {
         xml = `<span${classString}${props}>${innerText}</span>`;
         break;
       case 'image':
-        const source = parseImgUrl(schema.props.src, className);
-        const srcSet = typeof schema.props.src === 'string' && !isExpression(schema.props.src) ? ` srcSet={\`\$\{${source}\} 3x\`}` : ''
-        xml = `<img${classString}${props} src={${source}}${srcSet}/>`;
+        const source = parseProps(schema.props.src);
+        xml = `<img${classString}${props} src={${source}} />`;
         break;
       case 'div':
       case 'page':
@@ -555,6 +538,7 @@ module.exports = function(schema, option) {
         panelType: 'scss'
       }
     ],
-    noTemplate: true
+    noTemplate: true,
+    tinyKey: option.responsive.tinyKey
   };
 }
