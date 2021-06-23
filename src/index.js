@@ -336,7 +336,7 @@ module.exports = function(schema, option) {
   const generateRender = (schema) => {
     const type = schema.componentName.toLowerCase();
     const className = schema.props && schema.props.className || '';
-    const classString = className ? ` styleName="${className}"` : '';
+    const classString = className ? ` styleName='${className}'` : '';
     if (className) {
       style[className] = schema.props.style;
     }
